@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
     export default {
         head(){  //making the title dynamic
             return{
@@ -13,14 +14,19 @@
             }
 
         },
-        async getVideo($axios, params){
+        async fetch($axios, params){
             let response = await $axios.get(`/videos/${params.id}`);
             let video = response.data.data.videos;
-            return{
-                video
-            }
+            
+            store.commit('SET_CURRENT_VIDEO', video);
 
     },
+    computed:{
+        ...mapState({
+            video:'currentVideo'
+        })
+        
+    }
 }
     
 </script>
