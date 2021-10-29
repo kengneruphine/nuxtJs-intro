@@ -9,22 +9,11 @@
 
 <script>
     export default {
-        data(){
+       async asyncData($axios){
+            let response = await $axios.get('/videos')
+            let videos = response.data.data.videos;
             return{
-                videos:[
-                    {
-                        id:'1',
-                        name:"Introduction to nuxtjs"
-                    },
-                    {
-                        id:'2',
-                        name:"Introduction to vue js"
-                    },
-                    {
-                        id:'3',
-                        name:"Advanced tuto"
-                    }
-                ]
+                videos
             }
 
         }

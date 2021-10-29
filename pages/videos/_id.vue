@@ -6,32 +6,16 @@
 
 <script>
     export default {
-         data(){
+        async asyncData($axios, params){
+            let response = await $axios.get(`/videos/${params.id}`);
+            let video = response.data.data.videos;
             return{
-                videos:[
-                    {
-                        id:'1',
-                        name:"Introduction to nuxtjs"
-                    },
-                    {
-                        id:'2',
-                        name:"Introduction to vue js"
-                    },
-                    {
-                        id:'3',
-                        name:"Advanced tuto"
-                    }
-                ]
+                video
             }
-        
-    },
 
-    computed:{
-        video(){
-            return this.videos.find(v => v.id == this.$route.params.id )
-        }
-    }
-    }
+    },
+}
+    
 </script>
 
 <style lang="scss" scoped>
