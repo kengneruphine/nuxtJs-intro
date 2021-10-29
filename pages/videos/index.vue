@@ -12,7 +12,7 @@
         head:{
             title: "Videos List"
         },
-       async fetch($axios, store){
+       async getVideos($axios, store){
             let response = await $axios.get('/videos')
             let videos = response.data.data.videos;
 

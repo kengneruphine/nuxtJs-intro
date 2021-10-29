@@ -14,7 +14,7 @@ import {mapState} from 'vuex'
             }
 
         },
-        async fetch($axios, params){
+        async getVideo($axios, params){
             let response = await $axios.get(`/videos/${params.id}`);
             let video = response.data.data.videos;
             
