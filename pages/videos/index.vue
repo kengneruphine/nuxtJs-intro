@@ -9,7 +9,10 @@
 
 <script>
     export default {
-       async asyncData($axios){
+        head:{
+            title: "Videos List"
+        },
+       async getVideos($axios){
             let response = await $axios.get('/videos')
             let videos = response.data.data.videos;
             return{
